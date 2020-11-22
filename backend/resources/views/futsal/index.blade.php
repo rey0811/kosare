@@ -8,9 +8,14 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                futsal review site
-                <a href="/futsalplaces/tokyo">東京</a>
-                <a href="/futsalplaces/kanagawa">神奈川</a>
+                futsal list
+                <ul>
+                @foreach ($futsals as $futsal)
+                    <li>
+                        <a href="/futsalplaces/{{$futsal->id}}">{{ $futsal->name }}</a>
+                    </li>
+                @endforeach
+                </ul>
                 </div>
             </div>
         </div>

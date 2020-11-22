@@ -25,7 +25,7 @@ class FutsalsTableSeeder extends Seeder
         ],
             [
             'name' => 'futsal 2',
-            'place' => 'tokyo',
+            'place' => 'kanagawa',
             'url' => 'yyy',
             'created_at' => new Datetime(),
             'updated_at' => new Datetime()
