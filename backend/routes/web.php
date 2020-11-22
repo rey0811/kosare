@@ -27,3 +27,6 @@ Route::get('/futsalplaces/{place}',[FutsalController::class, 'index']);
 
 // フットサル場詳細画面表示
 Route::get('/futsalplaces/detail/{id}',[FutsalController::class, 'show']);
+
+// レビュー投稿画面表示
+Route::get('/futsalplaces/detail/{id}/review',[FutsalController::class, 'create']);

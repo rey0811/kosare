@@ -15,7 +15,7 @@
                     <li>place:{{ $futsal->place }}</li>
                     <li>url:{{ $futsal->url }}</li>
                 </ul>
-                <button class="btn btn-primary">レビューを投稿する</button>
+                <a href="/futsalplaces/detail/{{$futsal->id}}/review">レビュー</a>
                 </div>
             </div>
         </div>

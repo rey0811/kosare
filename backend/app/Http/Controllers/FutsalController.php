@@ -23,4 +23,11 @@ class FutsalController extends Controller
         $futsal = Futsal::find($id);
         return view('futsal.show')->with('futsal', $futsal);
     }
+
+    public function create($id)
+    {
+        $futsal = Futsal::find($id);
+        return view('futsal.create')->with('futsal', $futsal);
+    }
+
 }
