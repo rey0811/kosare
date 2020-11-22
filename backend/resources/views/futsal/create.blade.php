@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('futsal.store', ['id' => $futsal->id]) }}">
                         @csrf
 
                         <!-- フットサル場の名前 -->
@@ -57,12 +57,12 @@
 
                         <!-- レビュー内容 -->
                         <div class="form-group row">
-                            <label for="review" class="col-md-4 col-form-label text-md-right">{{ __('レビュー内容') }}</label>
+                            <label for="content" class="col-md-4 col-form-label text-md-right">{{ __('レビュー内容') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="review" type="review" class="form-control @error('review') is-invalid @enderror" name="review" rows="5" required></textarea>
+                                <textarea id="content" type="content" class="form-control @error('content') is-invalid @enderror" name="content" rows="5" required></textarea>
 
-                                @error('review')
+                                @error('content')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

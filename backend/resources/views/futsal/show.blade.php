@@ -15,7 +15,9 @@
                     <li>place:{{ $futsal->place }}</li>
                     <li>url:{{ $futsal->url }}</li>
                 </ul>
-                <a href="/futsalplaces/detail/{{$futsal->id}}/review">レビュー</a>
+                @if( Auth::check() )
+                    <a href="/futsalplaces/detail/{{$futsal->id}}/review">レビュー</a>
+                @endif
                 </div>
             </div>
         </div>

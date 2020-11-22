@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Futsal;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class FutsalController extends Controller
 {
@@ -28,6 +30,26 @@ class FutsalController extends Controller
     {
         $futsal = Futsal::find($id);
         return view('futsal.create')->with('futsal', $futsal);
+    }
+
+    public function store(Request $request, $futsal_id)
+    {
+        $user_id = Auth::id();
+        $date = $request->input('date');
+        $star = $request->input('star');
+        $content = $request->input('content');
+
+        $review = new Review();
+        $review->create([
+            'user_id' => $user_id,
+            'futsal_id' => $futsal_id,
+            'date' => $date,
+            'star' => $star,
+            'content' => $content
+        ]);
+
+        $futsal = Futsal::find($futsal_id);
+        return view('futsal.show')->with('futsal', $futsal);
     }
 
 }
