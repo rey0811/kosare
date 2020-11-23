@@ -10,7 +10,11 @@
                 <div class="card-body">
                 <div>
                     <p>アクセス</p>
-                    <a href="{{url( $futsal->url )}}">{{ $futsal->url }}</a>
+                    <a
+                        href="{{url( $futsal->url )}}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >{{ $futsal->url }}</a>
                 </div>
                 <!-- 口コミを最新順に並べる(=利用日の最新+作成日の最新) -->
                 @forelse ($futsal->reviews()->orderBy('date', 'desc')->orderBy('created_at', 'desc')->get() as $review)
