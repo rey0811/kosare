@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FutsalController;
 
 /*
@@ -20,7 +21,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// プロフィール編集画面
+Route::get('/home/{id}/edit', [HomeController::class, 'edit'])->name('home.edit');
+
+// プロフィール更新
+Route::get('/home/{id}/update', [HomeController::class, 'update'])->name('home.update');
+
 
 // フットサル場一覧画面表示
 Route::get('/futsalplaces/{place}',[FutsalController::class, 'index']);
