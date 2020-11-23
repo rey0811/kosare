@@ -17,7 +17,7 @@ use App\Http\Controllers\FutsalController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('top');
 
 Auth::routes();
 
@@ -36,8 +36,9 @@ Route::get('/futsalplaces/{place}',[FutsalController::class, 'index']);
 // フットサル場詳細画面表示
 Route::get('/futsalplaces/detail/{id}',[FutsalController::class, 'show'])->name('futsal.show');
 
-// レビュー投稿画面表示
-Route::get('/futsalplaces/detail/{id}/review',[FutsalController::class, 'create']);
-
-// レビュー投稿
-Route::post('/futsalplaces/detail/{id}',[FutsalController::class, 'store'])->name('futsal.store');
+Route::group(['middleware' => 'auth'], function() {
+    // レビュー投稿画面表示
+    Route::get('/futsalplaces/detail/{id}/review',[FutsalController::class, 'create']);
+    // レビュー投稿
+    Route::post('/futsalplaces/detail/{id}',[FutsalController::class, 'store'])->name('futsal.store');
+});
