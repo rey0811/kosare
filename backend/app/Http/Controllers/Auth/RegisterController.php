@@ -70,4 +70,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function redirectPath()
+    {
+        // 新規登録後はホーム画面にリダイレクトする
+        return '/';
+    }
+
 }

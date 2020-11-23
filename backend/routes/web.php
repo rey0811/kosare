@@ -15,7 +15,7 @@ use App\Http\Controllers\FutsalController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
