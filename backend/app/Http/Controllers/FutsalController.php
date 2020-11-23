@@ -47,9 +47,7 @@ class FutsalController extends Controller
             'star' => $star,
             'content' => $content
         ]);
-
-        $futsal = Futsal::find($futsal_id);
-        return view('futsal.show')->with('futsal', $futsal);
+        return redirect()->route('futsal.show', ['id' => $futsal_id]);
     }
 
 }

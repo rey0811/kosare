@@ -8,13 +8,25 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                futsal detail
-                <ul>
-                    <li>id:{{ $futsal->id }}</li>
-                    <li>name:{{ $futsal->name }}</li>
-                    <li>place:{{ $futsal->place }}</li>
-                    <li>url:{{ $futsal->url }}</li>
-                </ul>
+                <div>
+                    <p>アクセス</p>
+                    <a href="{{url( $futsal->url )}}">{{ $futsal->url }}</a>
+                </div>
+                <!-- 口コミを最新順に並べる(=利用日の最新+作成日の最新) -->
+                @forelse ($futsal->reviews()->orderBy('date', 'desc')->orderBy('created_at', 'desc')->get() as $review)
+                    <p>{{ $review->user->name }} さん </p>
+                    <p>{{ $review->date }} </p>
+                    <star-rating rating="{{ $review->star }}"
+                                star-size="20"
+                                read-only="true"
+                                :show-rating="false">
+                    </star-rating>
+                    <p>{!! nl2br(e($review->content)) !!}</p>
+                    <hr>
+                @empty
+                    <p>口コミはありません</p>
+                    <hr>
+                @endforelse
                 @if( Auth::check() )
                     <a href="/futsalplaces/detail/{{$futsal->id}}/review">レビュー</a>
                 @endif

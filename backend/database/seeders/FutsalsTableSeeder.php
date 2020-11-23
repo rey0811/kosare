@@ -17,16 +17,16 @@ class FutsalsTableSeeder extends Seeder
     {
         DB::table('futsals')->insert([
             [
-            'name' => 'futsal 1',
-            'place' => 'tokyo',
-            'url' => 'xxx',
+            'name' => 'フットサルポイント川崎',
+            'place' => 'kanagawa',
+            'url' => 'http://futsalpoint.net/shisetsu/salu/kawasaki/',
             'created_at' => new Datetime(),
             'updated_at' => new Datetime()
         ],
             [
-            'name' => 'futsal 2',
+            'name' => 'アディダスフットサルパーク川崎',
             'place' => 'kanagawa',
-            'url' => 'yyy',
+            'url' => 'https://www.tokyu-sports.com/football/adidas-futsalpark/kawasaki.html',
             'created_at' => new Datetime(),
             'updated_at' => new Datetime()
         ],
