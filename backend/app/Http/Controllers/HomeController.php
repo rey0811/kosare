@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -37,10 +38,18 @@ class HomeController extends Controller
     {
         $name = $request->input('name');
         $email = $request->input('email');
+        $image = $request->file('image');
 
         $user = User::find($id);
         $user->name = $name;
         $user->email = $email;
+
+        // バケットの`user_image`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('user_image', $image, 'public');
+
+        // アップロードした画像のフルパスを取得
+        $user->image_path = Storage::disk('s3')->url($path);
+
         $user->save();
 
         return redirect()->route('home');

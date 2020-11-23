@@ -27,7 +27,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{id}/edit', [HomeController::class, 'edit'])->name('home.edit');
 
 // プロフィール更新
-Route::get('/home/{id}/update', [HomeController::class, 'update'])->name('home.update');
+Route::post('/home/{id}/update', [HomeController::class, 'update'])->name('home.update');
 
 
 // フットサル場一覧画面表示

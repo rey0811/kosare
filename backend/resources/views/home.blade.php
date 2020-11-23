@@ -15,6 +15,7 @@
                     @endif
 
                     マイページ
+                    <img style="width:200px;" src="{{ \Auth::user()->image_path }}">
                     <a href="{{ route('home.edit', ['id' => \Auth::Id()]) }}">プロフィール更新</a>
 
                     <!-- 口コミを最新順に並べる(=利用日の最新+作成日の最新) -->

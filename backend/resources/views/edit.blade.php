@@ -9,8 +9,9 @@
 
                 <div class="card-body">
                     <form
-                        method="PUT"
+                        method="POST"
                         action="{{ route('home.update', ['id' => \Auth::Id()]) }}"
+                        enctype="multipart/form-data"
                         >
                         @csrf
 
@@ -40,6 +41,23 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <img id="preview" for="image" class="col-md-4 col-form-label text-md-right" src="{{ \Auth::user()->image_path }}">
+
+                            <div class="col-md-6">
+
+                                <input id="image" type="file" name="image" value="{{ $user->image_path }}" accept="image/*" required >
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
